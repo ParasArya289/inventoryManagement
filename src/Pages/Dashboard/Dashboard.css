@@ -1,0 +1,7 @@
+.dashboard {
+  text-align: left;
+}
+.dashboard div {
+  margin: 0 auto;
+  width: 50%;
+}

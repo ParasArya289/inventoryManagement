@@ -1,9 +1,13 @@
-import './App.css';
+import { Route, Routes } from "react-router-dom";
+import "./App.css";
+import { Dashboard } from "./Pages/Dashboard/Dashboard";
 
 function App() {
   return (
     <div className="App">
-      <h1>This is MCR 10</h1>
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+      </Routes>
     </div>
   );
 }
