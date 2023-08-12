@@ -1,10 +1,21 @@
-import { createContext, useContext, useEffect, useReducer } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useReducer,
+  useState,
+} from "react";
 import { dataReducer, initData } from "../Reducer/dataReducer";
 
 const dataContext = createContext();
 
 export const DataContextProvider = ({ children }) => {
   const [dataState, dispatchData] = useReducer(dataReducer, initData);
+  const [filters, setFilters] = useState({
+    category: "all",
+    lowStockItem: false,
+    sort: "name",
+  });
 
   useEffect(() => {
     dispatchData({ type: "GET_INVENTORY_COUNT" });
@@ -12,7 +23,9 @@ export const DataContextProvider = ({ children }) => {
   }, []);
 
   return (
-    <dataContext.Provider value={{ dataState, dispatchData }}>
+    <dataContext.Provider
+      value={{ dataState, dispatchData, filters, setFilters }}
+    >
       {children}
     </dataContext.Provider>
   );
