@@ -5,7 +5,7 @@
   background-color: var(--secondary-color);
 }
 .navbar > div {
-  /* position: fixed; */
+  position: fixed;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -14,13 +14,16 @@
 }
 .links {
   text-decoration: none;
-  font-size: 1.4rem;
+  font-size: 1.1rem;
   color: var(--secondary-text-color);
 }
 .link__icons {
   margin-right: 10px;
 }
 .links:is(:hover, :focus) {
+  color: var(--primary-color);
+}
+.active{
   color: var(--primary-color);
 }
 @media (max-width: 800px) {

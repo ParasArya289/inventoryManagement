@@ -4,6 +4,7 @@ import { BiCategory } from "react-icons/bi";
 import "./Navbar.css";
 
 export const Navbar = () => {
+  // const activeNavLink = {(active)}
   return (
     <nav className="navbar">
       <div>
