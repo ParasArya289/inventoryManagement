@@ -3,16 +3,21 @@ import { Layout } from "../../Components/Layout/Layout";
 
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
+import { useData } from "../../Context/dataContext";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 export const Dashboard = () => {
+  const {
+    dataState: { totalStocks, totalDelivered, lowStockItems },
+  } = useData();
+
   const data = {
     labels: ["Total Stocks", "Total Delivered", "Low Stock Items"],
     datasets: [
       {
         label: "",
-        data: [12, 19, 3],
+        data: [totalStocks, totalDelivered, lowStockItems],
         backgroundColor: [
           "rgba(54, 162, 235, 0.2)",
           "rgba(255, 206, 86, 0.2)",
