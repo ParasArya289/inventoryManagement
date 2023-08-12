@@ -7,15 +7,15 @@ export const Navbar = () => {
   return (
     <nav className="navbar">
       <div>
-        <NavLink className="links">
+        <NavLink className="links" to="/">
           <RxBarChart className="link__icons" />
           <span>Dashboard</span>
         </NavLink>
-        <NavLink className="links">
+        <NavLink className="links" to="/departments">
           <RxDashboard className="link__icons" />
           <span>Departments</span>
         </NavLink>
-        <NavLink className="links">
+        <NavLink className="links" to="/products">
           <RxActivityLog className="link__icons" />
           <span>Products</span>
         </NavLink>
