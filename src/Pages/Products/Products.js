@@ -1,5 +1,6 @@
 import { Layout } from "../../Components/Layout/Layout";
 import { useData } from "../../Context/dataContext";
+import { filterDataArr } from "../../Utils/Utils";
 import "./Products.css";
 
 export const FilterHeader = () => {
@@ -54,12 +55,52 @@ export const FilterHeader = () => {
   );
 };
 
+export const Table = ({filterDataArr}) => {
+  return (
+    <table className="snack-table">
+      <thead>
+        <tr>
+          <th>Image </th>
+
+          <th>Name</th>
+
+          <th>Description</th>
+
+          <th>Price</th>
+
+          <th name="calories">Stock</th>
+
+          <th>Supplier</th>
+        </tr>
+      </thead>
+      <tbody>
+        {filterDataArr?.map((item, index) => (
+          <tr key={index}>
+            <td><img src={item.imageUrl} height="100"/></td>
+            <td>{item.name}</td>
+            <td>{item.description}</td>
+            <td>{item.price}</td>
+            <td>{item.stock}</td>
+            <td>{item.supplier}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
+};
+
 export const Products = () => {
+  const {
+    dataState: { inventoryData },
+    filters,
+  } = useData();
+  const filtered = filterDataArr(inventoryData,filters.category,filters.lowStockItem,filters.sort);
   return (
     <Layout>
       <div>
         <h3>Products</h3>
         <FilterHeader />
+        <Table filterDataArr={filtered}/>
       </div>
     </Layout>
   );

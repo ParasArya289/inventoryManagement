@@ -1,10 +1,28 @@
-.filterheader{
-    display: flex;
-    justify-content: space-between;
+.filterheader {
+  display: flex;
+  justify-content: space-between;
 }
-.filterheader select{
-    border: none;
-    width: 6rem;
-    padding: 0.5rem;
-    border-radius: 4px;
+.filterheader select {
+  border: none;
+  width: 6rem;
+  padding: 0.5rem;
+  border-radius: 4px;
+}
+
+.snack-table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+
+.snack-table th,
+.snack-table td {
+  padding: 8px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+.snack-table th {
+  background-color: #f2f2f2;
+  cursor: pointer;
 }
