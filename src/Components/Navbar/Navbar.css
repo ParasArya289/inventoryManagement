@@ -13,9 +13,14 @@
   margin-top: 50px;
 }
 .links {
+  display: flex;
+  align-items: center;
   text-decoration: none;
-  font-size: 1.1rem;
+  font-size: 1.4rem;
   color: var(--secondary-text-color);
+}
+.links span {
+  font-size: 1rem;
 }
 .link__icons {
   margin-right: 10px;
