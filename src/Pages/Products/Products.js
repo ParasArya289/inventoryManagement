@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { Layout } from "../../Components/Layout/Layout";
 import { useData } from "../../Context/dataContext";
 import { filterDataArr } from "../../Utils/Utils";
@@ -55,7 +56,7 @@ export const FilterHeader = () => {
   );
 };
 
-export const Table = ({filterDataArr}) => {
+export const Table = ({ filterDataArr }) => {
   return (
     <table className="snack-table">
       <thead>
@@ -76,7 +77,9 @@ export const Table = ({filterDataArr}) => {
       <tbody>
         {filterDataArr?.map((item, index) => (
           <tr key={index}>
-            <td><img src={item.imageUrl} height="100"/></td>
+            <td>
+              <img src={item.imageUrl} height="100" />
+            </td>
             <td>{item.name}</td>
             <td>{item.description}</td>
             <td>{item.price}</td>
@@ -94,13 +97,21 @@ export const Products = () => {
     dataState: { inventoryData },
     filters,
   } = useData();
-  const filtered = filterDataArr(inventoryData,filters.category,filters.lowStockItem,filters.sort);
+  const navigate = useNavigate();
+  const filtered = filterDataArr(
+    inventoryData,
+    filters.category,
+    filters.lowStockItem,
+    filters.sort
+  );
+
   return (
     <Layout>
       <div>
-        <h3>Products</h3>
+        <h3>Products</h3>{" "}
+        <button onClick={() => navigate("/add-product")}>New</button>
         <FilterHeader />
-        <Table filterDataArr={filtered}/>
+        <Table filterDataArr={filtered} />
       </div>
     </Layout>
   );

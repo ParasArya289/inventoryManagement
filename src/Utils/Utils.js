@@ -5,7 +5,7 @@ export const filterDataArr = (data, category, lowStockItem, sort) => {
   }
   if (category) {
     if (category !== "all") {
-      arr = arr.filter(({ department }) => department !== category);
+      arr = arr.filter(({ department }) => department === category);
     }
   }
   if (sort) {

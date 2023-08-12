@@ -13,10 +13,10 @@ export const dataReducer = (state, action) => {
     case "GET_INVENTORY_COUNT": {
       const inventory = state?.inventoryData?.reduce(
         (acc, { stock, delivered }) => ({
-          totalStocks: (acc.totalStocks += stock),
-          totalDelivered: (acc.totalDelivered += delivered),
+          totalStocks: (acc.totalStocks += +stock),
+          totalDelivered: (acc.totalDelivered += +delivered),
           lowStockItems:
-            stock <= 10 ? (acc.lowStockItems += stock) : acc.lowStockItems,
+            stock <= 10 ? (acc.lowStockItems += +stock) : acc.lowStockItems,
         }),
         {
           totalStocks: 0,
@@ -35,6 +35,18 @@ export const dataReducer = (state, action) => {
         departments: [
           ...new Set(state?.inventoryData?.map(({ department }) => department)),
         ],
+      };
+    }
+    case "ADD_PRODUCT": {
+      return {
+        ...state,
+        inventoryData: [...state.inventoryData, action.payload],
+      };
+    }
+    case "INIT_DATA": {
+      return {
+        ...state,
+        ...action.payload,
       };
     }
   }
