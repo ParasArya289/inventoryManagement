@@ -10,12 +10,13 @@ import { dataReducer, initData } from "../Reducer/dataReducer";
 const dataContext = createContext();
 
 export const DataContextProvider = ({ children }) => {
-  const [dataState, dispatchData] = useReducer(dataReducer, initData);
   const [filters, setFilters] = useState({
     category: "all",
     lowStockItem: false,
     sort: "name",
   });
+
+  const [dataState, dispatchData] = useReducer(dataReducer, initData);
 
   useEffect(() => {
     dispatchData({ type: "GET_INVENTORY_COUNT" });
@@ -24,7 +25,7 @@ export const DataContextProvider = ({ children }) => {
 
   return (
     <dataContext.Provider
-      value={{ dataState, dispatchData, filters, setFilters }}
+      value={{ filters, setFilters, dataState, dispatchData }}
     >
       {children}
     </dataContext.Provider>
