@@ -10,7 +10,7 @@ export const filterDataArr = (data, category, lowStockItem, sort) => {
   }
   if (sort) {
     if (sort === "name") {
-      arr = arr.sort((a, b) => b.name > a.name);
+      arr = arr.sort((a, b) => a.name.localeCompare(b.name));
     } else if (sort === "price") {
       arr = arr.sort((a, b) => b.price - a.price);
     } else if (sort === "stock") {
